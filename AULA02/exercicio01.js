@@ -4,8 +4,6 @@
 
 let anoAtual = 2026;
 let anoNascimento = 2009;
-console.log(anoAtual);
-console.log(anoNascimento);
+let idade = anoAtual - anoNascimento;
 
-let subtracao = anoAtual - anoNascimento;
-console.log(subtracao);
+console.log("A idade é:" + idade);
