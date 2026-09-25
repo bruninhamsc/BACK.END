@@ -59,3 +59,4 @@ Hoje em dia, o JavaScript é uma linguagem universal que roda em praticamente qu
 ```javascript
 let nome = "Maria";      // Pode ser reatribuído
 const IDADE = 25;       // Valor fixo (não pode ser reatribuído)
+var cidade = "São Paulo"; // Forma antiga: possui escopo de função e sofre elevação (hoisting)
