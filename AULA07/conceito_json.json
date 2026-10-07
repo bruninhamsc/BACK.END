@@ -1,0 +1,15 @@
+{
+    "cachorro": {
+        "nome": "Kiko",
+        "idade": 5,
+        "raca": "Yorkshire",
+        "vacinado": true,
+        "peso": 5.0,
+        "brinquedos": ["osso", "bola"],
+        "dono": {
+            "nome": "Bruna",
+            "tek=lefone": "11908634672"
+        }
+
+    }
+}
