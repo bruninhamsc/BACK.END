@@ -72,15 +72,14 @@ function sortear(array) {
 app.get("/api/cachorros/aleatorio", (req, res) => {
     // req = request(requisição) = é o pedido que chega ao servidor, por exemplo, o navegador pede uma foto de cachorro
     // res = response(resposta) = é o que o servidor envia devolta , por exemplo, o endereço da foto do cachorro
-
+    
     // pegar todas as fotos de todas as raças
     // object.values pega os valores do objeto
     // flat transforma tudo em um único array
     const todasAsFotos = Object.values(cachorros).flat();
-})
 
 // Sorteia uma foto aleatória
-const item = sortear(todasAsFotos)
+const item = sortear(todasAsFotos);
 
 //  Responder para o clienteem formato JSON
 res.json({
@@ -89,13 +88,14 @@ res.json({
     // URL da imagem
     message: `https://localhost:${PORT}/fotos/${item}`
 });
+});
 
 // ROTA 2 - Cachorro por raça
 // Exemplo de acesso:
 // https://localhost:3000/cachorros/husky
 
 app.get("/api/cachorros/:raca", (req, res) => {
-
+    
     // pega o parametro da URL (ex:husky)
     const raca = req.params.raca.toLocaleLowerCase();
     // params = contém os parametros definidos na URL da rota
@@ -104,22 +104,34 @@ app.get("/api/cachorros/:raca", (req, res) => {
     if (!cachorros[raca]) {
         // cachorros[raca]: vai procurara a raça dentro do objeti "cachorros"
         // !: significa não: Nesse caso, verifica se a raça não existe ou se seu valor é falso.
-            //  caso não existir, retorna erro 404
-            res,status(404).json({
-                status: "error",
-                message: `Raça "${raca}" não encontrada`
-            });
-
-            // Encerra a execução da rota
-            return;
+        //  caso não existir, retorna erro 404
+        res,status(404).json({
+            status: "error",
+            message: `Raça "${raca}" não encontrada`
+        });
+        
+        // Encerra a execução da rota
+        return;
     }
-
+    
     // Sorteia uma foto da raca solicitada
     const item = sortear(cachorros[raca]);
-
+    
     // retorna a resposta em JSON
     res.json({
         status: "success",
         message: `https://localhost:${PORT}/fotos/${item}`
     });
 });
+
+// ============================================
+// INICIAR O SERVIDOR
+// ============================================
+
+// Inicia o servidor express
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em https://localhost:${PORT}`);
+    console.log(`Coloque as fotos manualmente em: data/fotos/`);
+    
+    
+})
